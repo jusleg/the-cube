@@ -571,7 +571,11 @@ class Controls {
 
     } );
 
-    if ( solved ) this.onSolved();
+    if ( solved ) {
+      this.game.confetti.start();
+    } else {
+      this.game.confetti.stop();
+    }
 
   }
 
