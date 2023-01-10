@@ -7,7 +7,7 @@ export default {
   ],
   output: {
       format: 'iife',
-      file: './assets/js/cube.js',
+      file: './export/assets/js/cube.js',
       indent: '\t',
       sourceMap: false,
   },

@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "",
-  "dependencies": {},
   "devDependencies": {
-    "rollup-plugin-babel-minify": "^5.0.0"
+    "rollup-plugin-babel-minify": "^5.0.0",
+    "sass": "^1.57.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.build.js --bundleConfigAsCjs && cp upup.min.js export/ && cp upup.sw.min.js export/ && cp index.html export/ && cp -R assets export/"
+    "build": "./script/build.sh"
   },
   "repository": {
     "type": "git",
