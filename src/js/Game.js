@@ -53,7 +53,6 @@ class Game {
       stats: document.querySelector( '.ui__stats' ),
       texts: {
         title: document.querySelector( '.text--title' ),
-        note: document.querySelector( '.text--note' ),
         timer: document.querySelector( '.text--timer' ),
         complete: document.querySelector( '.text--complete' ),
         best: document.querySelector( '.text--best-time' ),
@@ -174,7 +173,6 @@ class Game {
       this.transition.buttons( BUTTONS.None, BUTTONS.Menu );
 
       this.transition.zoom( STATE.Playing, duration );
-      this.transition.title( HIDE );
 
       setTimeout( () => {
 

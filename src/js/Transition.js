@@ -392,17 +392,6 @@ class Transition {
 
     title.style.opacity = 1;
 
-    const note = this.game.dom.texts.note;
-
-    this.tweens.title[ letters.length ] = new Tween( {
-      target: note.style,
-      easing: Easing.Sine.InOut(),
-      duration: show ? 800 : 400,
-      yoyo: show ? true : null,
-      from: { opacity: show ? 0 : ( parseFloat( getComputedStyle( note ).opacity ) ) },
-      to: { opacity: show ? 1 : 0 },
-    } );
-
     setTimeout( () => this.activeTransitions--, this.durations.title );
 
   }
