@@ -25,12 +25,12 @@ const STATE = {
 };
 
 const BUTTONS = {
-  Menu: [ 'stats', 'prefs' ],
-  Playing: [ 'back' ],
+  Menu: [],
+  Playing: [],
   Complete: [],
   Stats: [],
-  Prefs: [ 'back', 'theme' ],
-  Theme: [ 'back', 'reset' ],
+  Prefs: [],
+  Theme: [],
   None: [],
 };
 
@@ -102,44 +102,12 @@ class Game {
 
       setTimeout( () => this.transition.title( SHOW ), 700 );
       setTimeout( () => this.transition.buttons( BUTTONS.Menu, BUTTONS.None ), 1000 );
-
+      setTimeout( () => this.game( SHOW ), 2000 );
     }, 500 );
 
   }
 
   initActions() {
-
-    let tappedTwice = false;
-
-    this.dom.game.addEventListener( 'click', event => {
-
-      if ( this.transition.activeTransitions > 0 ) return;
-      if ( this.state === STATE.Playing ) return;
-
-      if ( this.state === STATE.Menu ) {
-
-        if ( ! tappedTwice ) {
-
-          tappedTwice = true;
-          setTimeout( () => tappedTwice = false, 300 );
-          return false;
-
-        }
-
-        this.game( SHOW );
-
-      } else if ( this.state === STATE.Complete ) {
-
-        this.complete( HIDE );
-
-      } else if ( this.state === STATE.Stats ) {
-
-        this.stats( HIDE );
-
-      } 
-
-    }, false );
-
     this.controls.onMove = () => {
 
       if ( this.newGame ) {
@@ -188,7 +156,6 @@ class Game {
     this.dom.buttons.stats.onclick = event => this.stats( SHOW );
 
     this.controls.onSolved = () => this.complete( SHOW );
-
   }
 
   game( show ) {
@@ -196,15 +163,10 @@ class Game {
     if ( show ) {
 
       if ( ! this.saved ) {
-
-        this.scrambler.scramble();
-        this.controls.scrambleCube();
         this.newGame = true;
-
       }
 
-      const duration = this.saved ? 0 :
-        this.scrambler.converted.length * ( this.controls.flipSpeeds[0] + 10 );
+      const duration = 0;
 
       this.state = STATE.Playing;
       this.saved = true;
